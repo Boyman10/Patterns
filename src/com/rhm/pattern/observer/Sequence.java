@@ -1,5 +1,7 @@
 package com.rhm.pattern.observer;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Scanner;
  * @author John
  * @version 1.0.0
  */
-public class Sequence {
+public class Sequence implements Observer {
 
 	private String propAttr;
 	
@@ -41,12 +43,25 @@ public class Sequence {
 			
 		} while (read != 1 && read != 2);
 		
+		Game game;
+		game = new Game();
+		game.addObserver(this);	
 		
 		switch(read) {
 		
 		case 1:
-			Game game = new Game();
-		
+
+			 game.startGame();
+			break;
+		case 2:
+		default:
+			game.startGame();
 		}
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+
+		startSequence();
 	}
 }
