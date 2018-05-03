@@ -43,7 +43,7 @@ public class Sequence implements Observer {
 			
 		} while (read != 1 && read != 2);
 		
-		Game game;
+		Observable game;
 		game = new Game();
 		game.addObserver(this);	
 		
@@ -51,17 +51,20 @@ public class Sequence implements Observer {
 		
 		case 1:
 
-			 game.startGame();
+			 ((Game) game).startGame();
 			break;
 		case 2:
 		default:
-			game.startGame();
+			((Game) game).startGame();
 		}
+		
+		
 	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
 
+		System.out.println("Updating observer now");
 		startSequence();
 	}
 }

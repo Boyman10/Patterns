@@ -24,7 +24,7 @@ public class Game extends Observable {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("What's up man !");
+		System.out.println("What's up man ! Say your name");
 		
 		System.out.println("good job " + sc.nextLine());
 		
@@ -34,6 +34,7 @@ public class Game extends Observable {
 		sc.hasNext();
 		
 		// Tell the others we finished !!
+		this.setChanged();
 		this.notifyObservers();
 		
 	}
